@@ -51,3 +51,24 @@ exports.login = async (req, res) => {
 
   res.cookie('token', token, cookieOpts).json({ message: 'Bienvenido' })
 }
+
+//Cierre de sesión (destruye LOGIN)
+exports.logout = async (req, res) => {
+  res.clearCookie('token', cookieOpts).json({ message: 'Sesión finalizada' })
+}
+
+//Función que retorne la información completa del usuario
+//usuario > persona
+exports.me = async (req, res) => {
+  //Objetivo es hacer una consulta multitable para obtener los datos del usuario
+  const usuario = await db('usuarios as u')
+    .join('personas as p', 'p.id', 'u.idpersona')
+    .where('u.id', req.user.id)
+    .select('ud.id', 'u.nombre_usuario', 'u.nivel_acceso', 'p.nombres', 'p.apellidos')
+    .first()
+  
+  if (!usuario) throw httpError(401, 'Usuario no encontrado')
+
+  //Si existe envío los datos como JSON
+  res.json(usuario)
+}
