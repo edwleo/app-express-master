@@ -6,10 +6,10 @@ const c = require('../controllers/persona.controller')
 
 //router.verbo('/ruta', controlador.accion)
 
-router.get('/') //listar
-router.get('/:id') //buscar
-router.post('/') //registrar
-router.put('/:id') //modificar
-router.delete('/:id') //eliminar
+router.get('/', c.list) //listar
+router.get('/:id', c.get) //buscar
+router.post('/', c.create) //registrar
+router.put('/:id', c.update) //modificar
+router.delete('/:id', c.remove) //eliminar
 
 module.exports = router

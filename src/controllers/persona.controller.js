@@ -18,6 +18,8 @@ const pick = (body) => {
 }
 
 //Lista completa de personas
+//SELECT * FROM Tabla
+//GET BÚSQUEDA    + WHERE condicion
 exports.list = async (req, res) => {
   res.json(
     await db("personas")
