@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,36 +21,151 @@
       crossorigin="anonymous"
     ></script>
 
-    <h1>Welcome</h1>
-    <h2 id="who"></h2>
-    <button type="button" id="logout" class="btn btn-sm btn-dark">
-      Cerrar sesión
-    </button>
-
-    <hr />
-
-    <section id="seccionPersonas">
-      <div>
-        <h2>Personas</h2>
-        <button type="button" id="nuevaPersona">Nueva persona</button>
+    <!-- NAVBAR -->
+    <nav class="navbar md:navbar-expand bg-1 fg-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">App Node Express</a>
+        <button
+          class="btn-icon navbar-toggler"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+        <dialog
+          class="drawer drawer-end"
+          tabindex="-1"
+          id="navbarText"
+          aria-labelledby="navbarTextLabel"
+        >
+          <div class="drawer-header">
+            <h5 class="drawer-title" id="navbarTextLabel">Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="drawer"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="drawer-body">
+            <ul class="navbar-nav me-auto mb-2 md:mb-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Módulo 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Módulo 2</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <h5 id="who"></h5>
+            </span>
+            <button type="button" id="logout" class="btn-solid theme-inverse">
+              Cerrar sesión
+            </button>
+          </div>
+        </dialog>
       </div>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Apellidos</th>
-            <th>Nombres</th>
-            <th>Teléfono</th>
-            <th>Email</th>
-            <th>Dirección</th>
-            <th>Comandos</th>
-          </tr>
-        </thead>
-        <tbody id="cuerpoPersonas">
-          <!-- Renderizar de forma dinámica FILAS > CELDAS > BOTONES -->
-        </tbody>
-      </table>
-    </section>
+    </nav>
+    <!-- FIN NAVBAR -->
 
+    <div class="container">
+      <section id="seccionPersonas">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h2>Personas</h2>
+            <button
+              type="button"
+              class="btn-solid theme-primary"
+              id="nuevaPersona"
+            >
+              Nueva persona
+            </button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Apellidos</th>
+                <th>Nombres</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Comandos</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoPersonas">
+              <!-- Renderizar de forma dinámica FILAS > CELDAS > BOTONES -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- ZONA DE MODAL -->
+    <dialog class="dialog" id="dialogPersona">
+      <div class="dialog-header">
+        <h1 class="dialog-title">Persona</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="dialog"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="dialog-body">
+        <form action="" id="formPersona">
+          <div class="form-field">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" id="apellidos" class="form-control" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="nombres" class="form-label">Nombres</label>
+            <input type="text" id="nombres" class="form-control" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="tel" id="telefono" class="form-control" maxlength="9" minlength="9" pattern="\d+" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" id="direccion" class="form-control" required>
+          </div>
+        </form>
+      </div>
+      <div class="dialog-footer">
+        <button
+          type="button"
+          class="btn-solid theme-secondary"
+          data-bs-dismiss="dialog"
+        >
+          Cerrar
+        </button>
+        <button type="submit" form="formPersona" class="btn-solid theme-primary">
+          Guardar
+        </button>
+      </div>
+    </dialog>
+    <!-- FIN ZONA MODAL -->
+
+    <!-- Archivo principal JS -->
     <script src="./js/app.js"></script>
   </body>
 </html>
