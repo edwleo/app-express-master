@@ -9,6 +9,30 @@
   <h1>Welcome</h1>
   <h2 id="who"></h2> <button type="button" id="logout">Cerrar sesión</button>
 
+  <hr>
+
+  <section id="seccionPersonas">
+    <div>
+      <h2>Personas</h2>
+      <button type="button" id="nuevaPersona">Nueva persona</button>
+    </div>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Apellidos</th>
+          <th>Nombres</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Dirección</th>
+          <th>Comandos</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoPersonas">
+        <!-- Renderizar de forma dinámica FILAS > CELDAS > BOTONES -->
+      </tbody>
+    </table>
+  </section>
+
   <script src="./js/app.js"></script>
 </body>
 </html>
