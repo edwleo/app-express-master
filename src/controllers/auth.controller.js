@@ -64,7 +64,7 @@ exports.me = async (req, res) => {
   const usuario = await db('usuarios as u')
     .join('personas as p', 'p.id', 'u.idpersona')
     .where('u.id', req.user.id)
-    .select('ud.id', 'u.nombre_usuario', 'u.nivel_acceso', 'p.nombres', 'p.apellidos')
+    .select('u.id', 'u.nombre_usuario', 'u.nivel_acceso', 'p.nombres', 'p.apellidos')
     .first()
   
   if (!usuario) throw httpError(401, 'Usuario no encontrado')

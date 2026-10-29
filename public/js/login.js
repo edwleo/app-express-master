@@ -9,6 +9,6 @@ document.getElementById('formLogin').addEventListener('submit', async (event) =>
   })
 
   //Atributo OK = 2XX (true)
-  if (resultLogin.ok) { location.href = '../index.html' }
+  if (resultLogin.ok) { location.href = '/index.html' }
   else { document.getElementById("mensaje").textContent = (await resultLogin.json()).message }
 })
