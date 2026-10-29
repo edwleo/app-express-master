@@ -21,11 +21,23 @@ if (process.env.TRUST_PROXY) app.set('trust proxy', Number(process.env.TRUST_PRO
 
 //Configuración de seguridad
 //Cross-Site Scripting (XSS)
+
+/* 
+DIRECTIVAS:
+  - defaultSrc (archivos locales)
+  - styleSrc (CSS)
+  - scriptSrc (JS)
+  - connect-src (map)
+*/
+
 app.use(helmet({
   contentSecurityPolicy: {
     useDefaults: true,
     directives: {
-      'style-src': ["'self'"],
+      'defaultSrc': ["'self'"],
+      'styleSrc': ["'self'", "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/"],
+      'scriptSrc': ["'self'", "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/"],
+      'connect-src': ["'self'", "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/"],
       'upgrade-insecure-request': isProd ? [] : null
     }
   }
