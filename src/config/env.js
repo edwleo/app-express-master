@@ -1,4 +1,4 @@
-//VALICACIÓN # 01 - PARÁMETROS DE .env
+//VALIDACIÓN # 01 - PARÁMETROS DE .env
 //Validación de variables de configuración
 const required = ['DB_HOST', 'DB_USER', 'DB_NAME', 'JWT_SECRET']
 
